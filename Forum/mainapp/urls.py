@@ -4,7 +4,7 @@ from . import views
 
 app_name="mainapp"
 urlpatterns=[
-    path("",views.forum,name="forum"),
+    path("",views.index,name="index"),
     path("askQuestion", views.askQuestion, name="askQuestion"),
     path("login", views.login, name="login"),
     path("register", views.register, name="register"),
