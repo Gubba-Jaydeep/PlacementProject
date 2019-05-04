@@ -3,6 +3,7 @@ from django.db import models
 # Create your models here.
 
 import pymongo
+import datetime
 
 # Create your models here.
 
@@ -25,21 +26,41 @@ class Forum:
 
     def addQuestion(self,q):
         mycol = self.mydb["question"]
-        qID=mycol.insert_one(q)
+        if mycol.find_one({"question": q['question']}) == None:
+            q['date']=datetime.datetime.now()
+            qID=mycol.insert_one(q)
+        else:
+            qID=None
+            return False
         qID=qID.inserted_id
         uID=q['uID']
         mycol = self.mydb["users"]
         x = mycol.find_one({"uID": uID})
         x['qAsked'].append(qID)
-        mycol.update_one({"_id": uID}, {"$set": x})
+        mycol.update_one({"uID": uID}, {"$set": x})
         return True
 
     def addAnswer(self,qID,answer):
+        answer['date'] = datetime.datetime.now()
         mycol = self.mydb["question"]
         x=mycol.find_one({"_id":qID})
         x['answers'].append(answer)
         mycol.update_one({"_id":qID},{"$set":x})
         return True
+
+    def getUsers(self):
+        pass
+
+    def addUser(self,user):
+        mycol = self.mydb["users"]
+        mycol.insert_one(user)
+
+    def getUser(self,uID):
+        mycol = self.mydb["users"]
+        return mycol.find_one({'uID':uID})
+
+
+
 
 
 
