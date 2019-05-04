@@ -24,7 +24,8 @@ def askQuestion(request):
 
 def login(request):
     f=Forum()
-    users=f.getUser()
+    uID=12
+    users=f.getUser(uID)
     return render(request,'mainapp/forum.html',{})
 
 def register(request):
@@ -33,7 +34,8 @@ def register(request):
 def r_validate(request):
     return render(request,'mainapp/forum.html',{})
 
-
+def logout(request):
+    return render(request, 'mainapp/forum.html', {})
 
 def sendMail(email,otp):
     '''sends mail provided email and otp'''

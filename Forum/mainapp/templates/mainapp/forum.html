@@ -18,8 +18,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        
-</head>
+
 
 <style>
 #n1 {
@@ -48,6 +47,7 @@
 </style>
 </head>
 <body style="background-color:lightgray;">
+<main>
 
 <ul id="n1"><div style="width:100%">
     <div style="float:left;width: 15%">
@@ -102,7 +102,7 @@
 		</div>
 		<div class="col-md-3">
 				<h1>Post Your Question Here....</h1>
-				<form action="">
+				<form action="{% url 'mainapp:askQuestion' %}">
                     {% csrf_token %}
 						<div class="row">
 							<div class="col-md-10 col-md-offset-1">
@@ -138,7 +138,6 @@
 	
 </main>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-</body>
 <script type="text/javascript" src="{% static 'mainapp/assets/js/bootstrap.js' %}"></script>
 <script type="text/javascript" src="{% static 'mainapp/assets/js/bootstrap-table.js' %}"></script>
         
@@ -211,4 +210,5 @@ $('[data-toggle=offcanvas-in]').click(function() {
     $('span.collapse').addClass('in');
 });
 	</script>
+</body>
 </html>
