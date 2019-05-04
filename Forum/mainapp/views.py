@@ -25,7 +25,6 @@ def askQuestion(request):
 def index(request):
     if request.COOKIES.get("loggedIn", None):
         return render(request, 'mainapp/forum.html', {})
-
     return render(request, 'mainapp/login.html', {})
 
 def login(request):
@@ -48,16 +47,42 @@ def logout(request):
         response.delete_cookie("loggedIn")
         return response
     else:
-        render(request, 'mainapp/forum1.html', {})
+        msg="u are not logged in to log out"
+        render(request, 'mainapp/forum1.html', {'msg':msg})
 
 def register(request):
+    import random
     uId=request.GET['uID']
     email=request.GET['email']
-    ctx={"uId":uId,"email":email}
-    return render(request, 'mainapp/forum.html', {"ctx":ctx})
+    otp= random.randint(1000,9999)
+    sendMail(email,otp)
+    ctx={"uId":uId,"email":email, "otp":otp}
+    response = render(request, 'mainapp/r_validate.html', {"ctx":ctx})
+    response.set_cookie("uidReg", uId)
+    response.set_cookie("emailReg", email)
+    response.set_cookie("otp", otp)
+    return response
 
 def r_validate(request):
-    return render(request,'mainapp/forum.html',{})
+    uID=request.COOKIES.get("uidReg")
+    email=request.COOKIES.get("emailReg")
+    password=request.GET['pass']
+    type=request.GET['type']
+
+    uotp=request.GET['uotp']
+    otp=request.COOKIES.get("otp")
+    if otp==uotp:
+        f=Forum()
+        f.addUser({"uID":uID, "type":type, "email":email, "password":password, "aura":0, "qAsked":[]})
+        response =render(request, 'mainapp/login.html', {})
+        response.delete_cookie("uidReg")
+        response.delete_cookie("emailReg")
+        response.delete_cookie("otp")
+        return response
+    else:
+        msg="otp doesnt match"
+        render(request, 'mainapp/forum1.html', {'msg':msg})
+
 
 
 
@@ -67,7 +92,7 @@ def sendMail(email,otp):
     s = smtplib.SMTP('smtp.gmail.com', 587)
     s.starttls()
     s.login("apnnarayana@gmail.com", "aappnnaassss")
-    message = "welcome to cvr forum\n\nyout otp is:"+otp
+    message = "welcome to cvr forum\n\nyout otp is:"+str(otp)
     s.sendmail("apnnarayana@gmail.com", email, message)
     s.quit()
 

@@ -129,18 +129,20 @@ body {
 
 		<div class="tabs-content">
 			<div id="signup-tab-content" class="active">
-				<form class="signup-form" action="" method="post">
-                        <h6>ROLLNO</h6>
-                        <h6>EMAIL</h6>
-                        <input type="password" class="input" placeholder="Password" required autofocus>
-                        <input type="password" class="input" placeholder="Confirm Password" required>
-					<select class="input">
-							<option value="type">Type</option>
+				<form class="signup-form" action="{% url 'mainapp:r_validate' %}" method="get">
+                    {% csrf_token %}
+                        <h6 >ROLLNO : {{ ctx.uId }}</h6>
+                        <h6 >EMAIL : {{ ctx.email }}</h6>
+                        <input type="password" class="input" name="pass" placeholder="Password" required autofocus>
+
+					<select class="input" name="type">
+							<option value="" disabled="disabled" selected="selected">Type</option>
 							<option value="student">Student</option>
-							<option value="Teacher">Teacher</option>
+							<option value="teacher">Teacher</option>
                     </select>
-                    <input class="input" type="number" required placeholder="OTP">
+                    <input class="input" type="number" required name="uotp" placeholder="OTP">
 					<input type="submit" class="button" value="Register">
+
 				</form><!--.login-form-->
 			</div><!--.signup-tab-content-->
 		</div><!--.tabs-content-->
