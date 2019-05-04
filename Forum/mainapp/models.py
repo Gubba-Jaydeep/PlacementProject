@@ -31,7 +31,7 @@ class Forum:
         if mycol.find_one({"question": q['question']}) == None:
             q['date']=datetime.datetime.now()
             qID=mycol.insert_one(q)
-            mycol.update_one({"_id":qID},{"$set":{'qID':qID}})
+            #mycol.update_one({"_id":qID.inserted_id},{"$set":{'qID':qID.inserted_id}})
         else:
             qID=None
             return False
