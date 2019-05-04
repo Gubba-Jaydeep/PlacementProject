@@ -1,0 +1,45 @@
+h1, h2, h3, h4, h5, h6{
+    color: black;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-weight: 500;
+  margin: 0 0 30px 0;
+}
+#fh5co-main {
+  
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+#fh5co-main .fh5co-narrow-content {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  padding: 4em 0;
+}
+.form-control{
+     -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  box-shadow: none;
+  background: transparent;
+  border: 2px solid rgba(0, 0, 0, 0.1) !important;
+  height: 54px !important;
+  font-size: 13px;
+  font-weight: 300;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  border-radius: 0px !important;
+}
+#message {
+  height: 130px !important;
+}
+.btn.btn-md {
+  padding: 10px 25px !important;
+}
+.btn-primary {
+  background: #da1212 !important;
+  color: #fff !important;
+  border: 2px solid #da1212 !important;
+border-radius: 0px !important;
+}
