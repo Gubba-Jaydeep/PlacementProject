@@ -16,6 +16,7 @@ class Forum:
         mycol = self.mydb["question"]
         res = []
         for x in mycol.find({},{"answers":0}):
+            #x['question']=x['question'][:min(50,len(x['question']))]
             res.append(x)
         return res
 
