@@ -16,7 +16,6 @@ def askQuestion(request):
     q['votes']=0
     q['answers']=[]
     q['subject']=request.GET['subject']
-    q['qID']=None
     if f.addQuestion(q):
         questions = f.getQuestions()
         return render(request, 'mainapp/forum.html',{"questions":questions})
