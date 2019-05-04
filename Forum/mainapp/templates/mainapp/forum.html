@@ -20,10 +20,53 @@
    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         
 </head>
+<body style="background-color:lightgray;">
+<style>
+#n1 {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+#n2 {
+  float: left;
+}
+
+#a1 {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 86px;
+  text-decoration: none;
+}
+
+#a1:hover {
+  background-color: #111;
+}
+</style>
+</head>
 <body>
+
+<ul id="n1"><div style="width:100%">
+    <div style="float:left;width: 15%">
+   <span style="color:white;
+  padding: 14px 55px;font-size:23px;
+  "> CVR Hub</span>
+        </div>
+    <div style="float:right;width: 85%">
+    <li id="n2"><a class="active" id="a1" href="#contact">DISCUSSION</a></li>
+  <li id="n2"><a id="a1"  href="#home">PROFILE</a></li>
+  <li id="n2"><a id="a1" href="#news">INFORMATION</a></li>
+     <li id="n2"><a id="a1" href="#news">LOGOUT</a></li>
+  </div>
+</div>
+</ul>
+
 	<div class="content">
         <div class="row">
-				<div class="col-md-12"><h3>CVR-Hub</h3></div>
+
           <div class="col-md-9">
 			<div class="fresh-table full-color-orange">
 				
@@ -60,21 +103,24 @@
 		<div class="col-md-3">
 				<h1>Post Your Question Here....</h1>
 				<form action="">
+                    {% csrf_token %}
 						<div class="row">
 							<div class="col-md-10 col-md-offset-1">
 								<div class="row">
 									<div class="col-md-12">
 										<div class="form-group">
-											<select>
+											<select name="subject">
 													<option value="" disabled="disabled" selected="selected">Select Subject</option>
-													<option value="1">DBMS</option>
-													<option value="2">WT</option>
+													<option value="DBMS">DBMS</option>
+													<option value="OOPS">OOPS</option>
+                                                    <option value="C">C</option>
+                                                    <option value="PYTHON">PYTHON</option>
 											</select>
 										</div>
 									</div>
 									<div class="col-md-12">
 										<div class="form-group">
-											<textarea name="" id="message" cols="30" rows="7" class="form-control" placeholder="Question..."></textarea>
+											<textarea name="askedQuestion" id="message" cols="30" rows="7" class="form-control" placeholder="Question..."></textarea>
 										</div>
 										<div class="form-group">
 											<input type="submit" class="btn btn-primary btn-md" value="Send Message">
