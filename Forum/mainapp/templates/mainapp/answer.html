@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'mainapp/ans.css' %}">
+    <title>Answer</title>
+</head>
+<body>
+<div>
+    <ul id="n1">
+    <div style="width:100%">
+        <div style="float:left;width:15%;">
+            <span style="color:white;text-align: center; padding: 40px 55px;font-size:23px"> CVR Hub</span>
+        </div>
+        <div style="float:right;width: 85%">
+            <li id="n2"><a class="active" id="a1" href="#contact">DISCUSSION</a></li>
+            <li id="n2"><a id="a1" href="#home">PROFILE</a></li>
+            <li id="n2"><a id="a1" href="#news">INFORMATION</a></li>
+            <li id="n2"><a id="a1" href="#news">LOGOUT</a></li>
+        </div>
+    </div>
+</ul>
+</div>
+    <div class="col-md-12" id="ques_box">
+        <h1 id="ques_heading">Your Question</h1>
+        <h4>{{ question.date }}</h4>
+        <p id="ques">{{ question.question }}</p>
+        <div id="ques">
+                <i class="fa fa-thumbs-up" style="padding: 10px;">123</i>
+                <i class="fa fa-thumbs-down" style="padding: 10px;">12</i>
+        </div>
+    </div>
+    <div class="col-md-12" id="ans_heading1">
+        <h1 id="ans_head">Answers:</h1>
+        <div  class="col-md-12" id="ans_heading" style="overflow-y:scroll; height:400px;">
+        {% for ans in question.answers %}
+        <div class="col-md-12" id="ans_box">
+                <h4>{{ ans.date }}</h4>
+            <p id="answer">{{ ans.answer }}</p>
+            <div id="ques">
+                    <i class="fa fa-thumbs-up" style="padding: 10px;">123</i>
+                    <i class="fa fa-thumbs-down" style="padding: 10px;">12</i>
+            </div>
+        </div>
+            {% endfor %}
+
+    </div>
+        
+    </div>
+</body>
+</html>

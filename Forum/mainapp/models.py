@@ -23,13 +23,15 @@ class Forum:
     def getAnswers(self,id):
         mycol=self.mydb["question"]
         x=mycol.find_one({"_id":id})
-        return x['answers']
+        #x['answers']
+        return x
 
     def addQuestion(self,q):
         mycol = self.mydb["question"]
         if mycol.find_one({"question": q['question']}) == None:
             q['date']=datetime.datetime.now()
             qID=mycol.insert_one(q)
+            mycol.update_one({"_id":qID},{"$set":{'qID':qID}})
         else:
             qID=None
             return False

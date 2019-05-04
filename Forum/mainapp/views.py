@@ -16,7 +16,7 @@ def askQuestion(request):
     q['votes']=0
     q['answers']=[]
     q['subject']=request.GET['subject']
-
+    q['qID']=None
     if f.addQuestion(q):
         questions = f.getQuestions()
         return render(request, 'mainapp/forum.html',{"questions":questions})
@@ -84,7 +84,9 @@ def r_validate(request):
         render(request, 'mainapp/forum1.html', {'msg':msg})
 
 
-
+def getQuestionDetails(request,id):
+    question = Forum().getAnswers(id)
+    return render(request,'mainapp/answer.html',{'question':question})
 
 def sendMail(email,otp):
     '''sends mail provided email and otp'''
