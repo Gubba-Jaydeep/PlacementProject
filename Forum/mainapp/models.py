@@ -21,6 +21,10 @@ class Forum:
             res.append(x)
         return res
 
+    def getQuestion(self,qID):
+        mycol=self.mydb["question"]
+        return mycol.find_one({'qID':qID})
+
     def getAnswers(self,qID):
         mycol=self.mydb["question"]
         x=mycol.find_one({"qID":int(qID)})
@@ -48,11 +52,13 @@ class Forum:
         return True
 
     def addAnswer(self,qID,answer):
+
         answer['date'] = datetime.datetime.now()
         mycol = self.mydb["question"]
-        x=mycol.find_one({"_id":qID})
-        x['answers'].append(answer)
-        mycol.update_one({"_id":qID},{"$set":x})
+        x=mycol.find_one({"qID":qID})
+        if answer:
+            x['answers'].append(answer)
+            mycol.update_one({"qID":qID},{"$set":x})
         return True
 
     def getUsers(self):

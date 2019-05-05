@@ -12,4 +12,5 @@ urlpatterns=[
     path("logout", views.logout, name="logout"),
     path("postAnswer", views.postAnswer, name="postAnswer"),
     re_path(r'^(?P<qID>[0-9]+)/$', views.getQuestionDetails, name="getQuestionDetails"),
+
 ]
