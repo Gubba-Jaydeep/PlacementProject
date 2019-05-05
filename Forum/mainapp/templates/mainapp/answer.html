@@ -56,7 +56,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">ANSWER</h4>
-                <form action="{% url 'mainapp:postAnswer' question.qID %}">
+                <form action="{% url 'mainapp:postAnswer' %}">
                     <p>Enter yout answer below:</p>
                     <textarea class="form-control" name="answeredAnswer"></textarea>
                     <div class="mt-4"><button class="btn btn-success btn-lg" type="submit">Answer</button></div>

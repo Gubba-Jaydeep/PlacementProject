@@ -56,8 +56,9 @@ class Forum:
         answer['date'] = datetime.datetime.now()
         mycol = self.mydb["question"]
         x=mycol.find_one({"qID":qID})
-        x['answers'].append(answer)
-        mycol.update_one({"_id":qID},{"$set":x})
+        if answer:
+            x['answers'].append(answer)
+            mycol.update_one({"qID":qID},{"$set":x})
         return True
 
     def getUsers(self):

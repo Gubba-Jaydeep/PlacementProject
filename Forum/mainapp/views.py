@@ -10,7 +10,7 @@ def askQuestion(request):
     f = Forum()
     #newQuestion
     q={}
-    user=f.getUser(request.COOKIES.get("username"))
+    user=f.getUser(request.COOKIES.get("userName"))
     q['uID']=user['uID']
     q['type']=user['type']
     q['question']=request.GET['askedQuestion']
@@ -78,6 +78,7 @@ def r_validate(request):
         response.delete_cookie("uidReg")
         response.delete_cookie("emailReg")
         response.delete_cookie("otp")
+        response.delete_cookie("qID")
         return response
     else:
         msg="otp doesnt match"
@@ -86,7 +87,9 @@ def r_validate(request):
 
 def getQuestionDetails(request,qID):
     question = Forum().getAnswers(int(qID))
-    return render(request,'mainapp/answer.html',{'question':question})
+    response= render(request,'mainapp/answer.html',{'question':question})
+    response.set_cookie('qID',qID)
+    return response
 
 def sendMail(email,otp):
     '''sends mail provided email and otp'''
@@ -98,10 +101,11 @@ def sendMail(email,otp):
     s.sendmail("apnnarayana@gmail.com", email, message)
     s.quit()
 
-def postAnswer(request, qID):
+def postAnswer(request):
+    qID=request.COOKIES.get("qID")
     answer={}
     f=Forum()
-    user = f.getUser(request.COOKIES.get("username"))
+    user = f.getUser(request.COOKIES.get("userName"))
     answer['type']=user['type']
     answer['uID']=user['uID']
     answer['answer']=request.GET['answeredAnswer']
