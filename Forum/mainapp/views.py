@@ -23,7 +23,7 @@ def askQuestion(request):
 
 def index(request):
     if request.COOKIES.get("loggedIn", None):
-        return render(request, 'mainapp/forum.html', {})
+        return render(request, 'mainapp/forum.html', {'questions':Forum().getQuestions()})
     return render(request, 'mainapp/login.html', {})
 
 def login(request):
@@ -83,8 +83,8 @@ def r_validate(request):
         render(request, 'mainapp/forum1.html', {'msg':msg})
 
 
-def getQuestionDetails(request,id):
-    question = Forum().getAnswers(id)
+def getQuestionDetails(request,qID):
+    question = Forum().getAnswers(int(qID))
     return render(request,'mainapp/answer.html',{'question':question})
 
 def sendMail(email,otp):
@@ -97,3 +97,5 @@ def sendMail(email,otp):
     s.sendmail("apnnarayana@gmail.com", email, message)
     s.quit()
 
+def postAnswer(request, qID):
+    pass

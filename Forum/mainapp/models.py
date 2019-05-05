@@ -4,6 +4,7 @@ from django.db import models
 
 import pymongo
 import datetime
+import bson
 
 # Create your models here.
 
@@ -20,9 +21,9 @@ class Forum:
             res.append(x)
         return res
 
-    def getAnswers(self,id):
+    def getAnswers(self,qID):
         mycol=self.mydb["question"]
-        x=mycol.find_one({"_id":id})
+        x=mycol.find_one({"qID":int(qID)})
         #x['answers']
         return x
 
@@ -31,7 +32,10 @@ class Forum:
         if mycol.find_one({"question": q['question']}) == None:
             q['date']=datetime.datetime.now()
             qID=mycol.insert_one(q)
-            #mycol.update_one({"_id":qID.inserted_id},{"$set":{'qID':qID.inserted_id}})
+            count=0
+            for i in mycol.find():
+                count+=1
+            mycol.update_one({"_id":qID.inserted_id},{"$set":{'qID':count+1}})
         else:
             qID=None
             return False
