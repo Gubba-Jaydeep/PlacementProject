@@ -32,8 +32,8 @@
         <h4>{{ question.date }}</h4>
         <p id="ques">{{ question.question }}</p>
         <div id="ques">
-                <i class="fa fa-thumbs-up" style="padding: 10px;">123</i>
-                <i class="fa fa-thumbs-down" style="padding: 10px;">12</i>
+                <button><i class="fa fa-thumbs-up" style="padding: 10px;">{{ question.votes.yes|length }}</i></button>
+                <button><i class="fa fa-thumbs-down" style="padding: 10px;">{{ question.votes.no|length }}</i></button>
         </div>
     </div>
     <div class="col-md-12" id="ans_heading1">
@@ -43,16 +43,27 @@
         <div class="col-md-12" id="ans_box">
                 <h4>{{ ans.date }}</h4>
             <p id="answer">{{ ans.answer }}</p>
+            <br>
+            <p id="answer">answered by :{{ ans.type }}</p>
             <div id="ques">
-                    <i class="fa fa-thumbs-up" style="padding: 10px;">123</i>
-                    <i class="fa fa-thumbs-down" style="padding: 10px;">12</i>
+                    <button><i class="fa fa-thumbs-up" style="padding: 10px;">{{ ans.votes.yes|length }}</i></button>
+                    <button><i class="fa fa-thumbs-down" style="padding: 10px;">{{ ans.votes.no|length }}</i></button>
             </div>
         </div>
             {% endfor %}
 
+        <div class="jumbotron">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">ANSWER</h4>
+                <form action="{% url 'mainapp:postAnswer' question.qID %}">
+                    <p>Enter yout answer below:</p>
+                    <textarea class="form-control" name="answeredAnswer"></textarea>
+                    <div class="mt-4"><button class="btn btn-success btn-lg" type="submit">Answer</button></div>
+                </form>
+            </div>
+        </div>
     </div>
 
-       <!--a href="{% url 'mainapp:postAnswer' question.qID %}"></a-->
-    </div>
 </body>
 </html>

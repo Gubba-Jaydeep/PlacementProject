@@ -10,6 +10,7 @@ urlpatterns=[
     path("register", views.register, name="register"),
     path("r_validate", views.r_validate, name="r_validate"),
     path("logout", views.logout, name="logout"),
-    path("postAnswer", views.postAnswer, name="postAnswer"),
+    #path("postAnswer", views.postAnswer, name="postAnswer"),
     re_path(r'^(?P<qID>[0-9]+)/$', views.getQuestionDetails, name="getQuestionDetails"),
+    re_path(r'^(?P<qID>[0-9]+)/$', views.postAnswer, name="postAnswer"),
 ]
