@@ -23,7 +23,7 @@ class Forum:
 
     def getAnswers(self,qID):
         mycol=self.mydb["question"]
-        x=mycol.find_one({"_id":bson.ObjectId(qID)})
+        x=mycol.find_one({"qID":int(qID)})
         #x['answers']
         return x
 

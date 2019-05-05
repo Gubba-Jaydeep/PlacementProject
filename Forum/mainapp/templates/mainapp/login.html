@@ -18,7 +18,9 @@
 
 		<div class="tabs-content">
 			<div id="signup-tab-content" class="active">
-				<form class="signup-form" action="{% url 'mainapp:register' %}" >
+				<form class="signup-form" action="{% url 'mainapp:register' %}"  >
+                                        {% csrf_token %}
+
 					<input type="email" class="input" id="user_email" name="email" autocomplete="off" placeholder="Email">
 					<input type="text" class="input" id="user_name" name="uID" autocomplete="off" placeholder="RollNo">
 					<input type="submit" class="button" value="Sign Up">
@@ -27,6 +29,7 @@
 
 			<div id="login-tab-content">
 				<form class="login-form" action="{% url 'mainapp:login' %}" >
+                    {% csrf_token %}
 					<input type="text" class="input" id="user_login" name="logUser" autocomplete="off" placeholder="Email">
 					<input type="password" class="input" id="user_pass" name="logPass" autocomplete="off" placeholder="Password">
 					<input type="submit" class="button" value="Login">
