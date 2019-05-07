@@ -14,7 +14,7 @@ def askQuestion(request):
     q['uID']=user['uID']
     q['type']=user['type']
     q['question']=request.GET['askedQuestion']
-    q['votes']={}
+    q['votes']={'yes':[],'no':[]}
     q['answers']=[]
     q['subject']=request.GET['subject']
     if f.addQuestion(q):
@@ -109,9 +109,18 @@ def postAnswer(request):
     answer['type']=user['type']
     answer['uID']=user['uID']
     answer['answer']=request.GET['answeredAnswer']
-    answer['votes']={}
+    answer['votes']={'yes':[],'no':[]}
     f.addAnswer(qID,answer)
     return getQuestionDetails(request,qID)
 
 def incQuestionVote(request):
-    Forum().incQuestionVote(request.COOKIES.get('userName'),int(request.COOKIES.get('qID')))
+    qID=request.COOKIES.get('qID')
+    Forum().questionVote(request.COOKIES.get('userName'),int(qID),'yes')
+    return getQuestionDetails(request, qID)
+def decQuestionVote(request):
+    qID=request.COOKIES.get('qID')
+    Forum().questionVote(request.COOKIES.get('userName'),int(qID),'no')
+    return getQuestionDetails(request, qID)
+
+def incAnswerVote(request):
+    pass

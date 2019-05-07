@@ -11,6 +11,8 @@ urlpatterns=[
     path("r_validate", views.r_validate, name="r_validate"),
     path("logout", views.logout, name="logout"),
     path("postAnswer", views.postAnswer, name="postAnswer"),
+    path("incQuestionVote", views.incQuestionVote, name="incQuestionVote"),
+    path("decQuestionVote", views.decQuestionVote, name="decQuestionVote"),
     re_path(r'^(?P<qID>[0-9]+)/$', views.getQuestionDetails, name="getQuestionDetails"),
 
 ]

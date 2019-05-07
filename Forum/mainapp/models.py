@@ -71,11 +71,17 @@ class Forum:
         mycol = self.mydb["users"]
         return mycol.find_one({'uID':uID})
 
-#writing this
-    def incQuestionVote(self,uname,qID):
+
+    def questionVote(self,uname,qID,inc):
         mycol = self.mydb["question"]
         x=mycol.find_one({"qID":qID})
-        pass
+        if (uname not in x['votes']['yes']) and (uname not in x['votes']['no']):
+            x['votes'][inc].append(uname)
+        elif inc=='yes' and uname in x['votes']['yes']:
+            x['votes'][inc].remove(uname)
+        elif inc=='no' and uname in x['votes']['no']:
+            x['votes'][inc].remove(uname)
+        mycol.update_one({"qID": int(qID)}, {"$set": x})
 
 
 
