@@ -55,13 +55,10 @@ class Forum:
         answer['date'] = datetime.datetime.now()
         mycol = self.mydb["question"]
         x=mycol.find_one({"qID":int(qID)})
+        answer['aID']=len(x['answers'])+1
         x['answers'].append(answer)
         mycol.update_one({"qID":int(qID)},{"$set":x})
         return True
-
-
-    def getUsers(self):
-        pass
 
     def addUser(self,user):
         mycol = self.mydb["users"]
@@ -83,7 +80,25 @@ class Forum:
             x['votes'][inc].remove(uname)
         mycol.update_one({"qID": int(qID)}, {"$set": x})
 
+    def answerVote(self,uname,aID,qID,inc):
+        mycol = self.mydb["question"]
+        x = mycol.find_one({"qID": qID})
+        if (uname not in x['answers'][aID-1]['votes']['yes']) and (uname not in x['answers'][aID-1]['votes']['no']):
+            x['answers'][aID-1]['votes'][inc].append(uname)
+            if inc=='yes':
+                self.changeAura(x['answers'][aID-1]['uID'],1)
+            elif inc=='no':
+                self.changeAura(x['answers'][aID-1]['uID'],-1)
+        elif inc=='yes' and uname in x['answers'][aID-1]['votes']['yes']:
+            x['answers'][aID-1]['votes'][inc].remove(uname)
+        elif inc=='no' and uname in x['answers'][aID-1]['votes']['no']:
+            x['answers'][aID-1]['votes'][inc].remove(uname)
+        mycol.update_one({"qID": int(qID)}, {"$set": x})
 
-
+    def changeAura(self,uID,change):
+        mycol = self.mydb["users"]
+        x= mycol.find_one({'uID': uID})
+        x['aura']=x['aura']+change
+        mycol.update_one({"uID": uID}, {"$set": x})
 
 

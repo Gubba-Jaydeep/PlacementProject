@@ -122,5 +122,11 @@ def decQuestionVote(request):
     Forum().questionVote(request.COOKIES.get('userName'),int(qID),'no')
     return getQuestionDetails(request, qID)
 
-def incAnswerVote(request):
-    pass
+def incAnswerVote(request,aID):
+    qID = request.COOKIES.get('qID')
+    Forum().answerVote(request.COOKIES.get('userName'),int(aID), int(qID), 'yes')
+    return getQuestionDetails(request,qID)
+def decAnswerVote(request,aID):
+    qID = request.COOKIES.get('qID')
+    Forum().answerVote(request.COOKIES.get('userName'),int(aID), int(qID), 'no')
+    return getQuestionDetails(request,qID)

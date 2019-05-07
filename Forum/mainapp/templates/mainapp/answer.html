@@ -46,8 +46,8 @@
             <br>
             <p id="answer">answered by :{{ ans.type }}</p>
             <div id="ques">
-                    <a class="btn-hover" style="color: green" href="#"><i class="fa fa-thumbs-up" style="padding: 10px;">{{ ans.votes.yes|length }}</i></a>
-                    <a class="btn-hover" style="color: red" href="#"><i class="fa fa-thumbs-down" style="padding: 10px;">{{ ans.votes.no|length }}</i></a>
+                    <a class="btn-hover" style="color: green" href="{% url 'mainapp:incAnswerVote' ans.aID %}"><i class="fa fa-thumbs-up" style="padding: 10px;">{{ ans.votes.yes|length }}</i></a>
+                    <a class="btn-hover" style="color: red" href="{% url 'mainapp:decAnswerVote' ans.aID %}"><i class="fa fa-thumbs-down" style="padding: 10px;">{{ ans.votes.no|length }}</i></a>
             </div>
         </div>
             {% endfor %}
@@ -58,8 +58,8 @@
                 <h4 class="card-title">ANSWER</h4>
                 <form action="{% url 'mainapp:postAnswer' %}">
                     <p>Enter yout answer below:</p>
-                    <textarea class="form-control" name="answeredAnswer"></textarea>
-                    <div class="mt-4"><button class="btn btn-success btn-lg" type="submit">Answer</button></div>
+                    <textarea required class="form-control" name="answeredAnswer"></textarea>
+                    <div class="mt-4"><input class="btn btn-success btn-lg" type="submit" value="Answer"></div>
                 </form>
             </div>
         </div>

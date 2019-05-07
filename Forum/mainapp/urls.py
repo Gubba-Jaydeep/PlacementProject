@@ -14,5 +14,7 @@ urlpatterns=[
     path("incQuestionVote", views.incQuestionVote, name="incQuestionVote"),
     path("decQuestionVote", views.decQuestionVote, name="decQuestionVote"),
     re_path(r'^(?P<qID>[0-9]+)/$', views.getQuestionDetails, name="getQuestionDetails"),
+    path("<int:aID>/ok",views.incAnswerVote,name="incAnswerVote"),
+    path("<int:aID>/notok",views.decAnswerVote,name="decAnswerVote"),
 
 ]
