@@ -52,14 +52,13 @@ class Forum:
         return True
 
     def addAnswer(self,qID,answer):
-
         answer['date'] = datetime.datetime.now()
         mycol = self.mydb["question"]
-        x=mycol.find_one({"qID":qID})
-        if answer:
-            x['answers'].append(answer)
-            mycol.update_one({"qID":qID},{"$set":x})
+        x=mycol.find_one({"qID":int(qID)})
+        x['answers'].append(answer)
+        mycol.update_one({"qID":int(qID)},{"$set":x})
         return True
+
 
     def getUsers(self):
         pass
@@ -72,8 +71,11 @@ class Forum:
         mycol = self.mydb["users"]
         return mycol.find_one({'uID':uID})
 
-
-
+#writing this
+    def incQuestionVote(self,uname,qID):
+        mycol = self.mydb["question"]
+        x=mycol.find_one({"qID":qID})
+        pass
 
 
 

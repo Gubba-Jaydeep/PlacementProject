@@ -112,3 +112,6 @@ def postAnswer(request):
     answer['votes']={}
     f.addAnswer(qID,answer)
     return getQuestionDetails(request,qID)
+
+def incQuestionVote(request):
+    Forum().incQuestionVote(request.COOKIES.get('userName'),int(request.COOKIES.get('qID')))

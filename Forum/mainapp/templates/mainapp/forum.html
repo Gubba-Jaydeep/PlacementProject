@@ -86,7 +86,7 @@
 						<tr>
 
 							<td>{{ question.question }}</td>
-							<td>{{ question.votes }}</td>
+							<td>{{ question.votes|length }}</td>
 							<td>{{ question.subject }}</td>
 							<td>
 								<a class="btn btn-default" href="{% url 'mainapp:getQuestionDetails' question.qID %}">Show Details</a>

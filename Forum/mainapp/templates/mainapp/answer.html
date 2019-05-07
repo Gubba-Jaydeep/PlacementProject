@@ -32,8 +32,8 @@
         <h4>{{ question.date }}</h4>
         <p id="ques">{{ question.question }}</p>
         <div id="ques">
-                <button><i class="fa fa-thumbs-up" style="padding: 10px;">{{ question.votes.yes|length }}</i></button>
-                <button><i class="fa fa-thumbs-down" style="padding: 10px;">{{ question.votes.no|length }}</i></button>
+                <a class="btn-hover" style="color: green" href="{% url 'mainapp:getQuestionDetails' %}"><i class="fa fa-thumbs-up" style="padding: 10px;">{{ question.votes.yes|length }}</i></a>
+                <a class="btn-hover" style="color: red" href="#"><i class="fa fa-thumbs-down" style="padding: 10px;">{{ question.votes.no|length }}</i></a>
         </div>
     </div>
     <div class="col-md-12" id="ans_heading1">
@@ -46,8 +46,8 @@
             <br>
             <p id="answer">answered by :{{ ans.type }}</p>
             <div id="ques">
-                    <button><i class="fa fa-thumbs-up" style="padding: 10px;">{{ ans.votes.yes|length }}</i></button>
-                    <button><i class="fa fa-thumbs-down" style="padding: 10px;">{{ ans.votes.no|length }}</i></button>
+                    <a class="btn-hover" style="color: green" href="#"><i class="fa fa-thumbs-up" style="padding: 10px;">{{ ans.votes.yes|length }}</i></a>
+                    <a class="btn-hover" style="color: red" href="#"><i class="fa fa-thumbs-down" style="padding: 10px;">{{ ans.votes.no|length }}</i></a>
             </div>
         </div>
             {% endfor %}
