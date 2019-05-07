@@ -2,178 +2,1416 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <style>
-        body {
-  font-family: sans-serif;
-  background-color: #eeeeee;
+    @import url("https://fonts.googleapis.com/css?family=Poppins|Raleway|Roboto+Condensed|Patua+One");
+
+body {
+ background-size: cover;
+  background-repeat: no-repeat;
+     overflow: hidden;
+    background: lightgray;
 }
 
-.file-upload {
-  background-color: #ffffff;
-  width: 600px;
-  margin: 0 auto;
-  padding: 20px;
+/* custom scrollbar  */
+::-webkit-scrollbar {
+  width: 10px;
 }
-
-.file-upload-btn {
-  width: 100%;
-  margin: 0;
-  color: #fff;
-  background: #1FB264;
-  border: none;
-  padding: 10px;
-  border-radius: 4px;
-  border-bottom: 4px solid #15824B;
-  transition: all .2s ease;
-  outline: none;
-  text-transform: uppercase;
-  font-weight: 700;
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
 }
-
-.file-upload-btn:hover {
-  background: #1AA059;
-  color: #ffffff;
-  transition: all .2s ease;
-  cursor: pointer;
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
 }
-
-.file-upload-btn:active {
-  border: 0;
-  transition: all .2s ease;
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
-
-.file-upload-content {
-  display: none;
-  text-align: center;
-}
-
-.file-upload-input {
-  position: absolute;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  outline: none;
-  opacity: 0;
-  cursor: pointer;
-}
-
-.image-upload-wrap {
-  margin-top: 20px;
-  border: 4px dashed #1FB264;
-  position: relative;
-}
-
-.image-dropping,
-.image-upload-wrap:hover {
-  background-color: #1FB264;
-  border: 4px dashed #ffffff;
-}
-
-.image-title-wrap {
-  padding: 0 15px 15px 15px;
-  color: #222;
-}
-
-.drag-text {
-  text-align: center;
-}
-
-.drag-text h3 {
-  font-weight: 100;
-  text-transform: uppercase;
-  color: #15824B;
-  padding: 60px 0;
-}
-
-.file-upload-image {
-  max-height: 200px;
-  max-width: 200px;
-  margin: auto;
-  padding: 20px;
-}
-
-.remove-image {
-  width: 200px;
-  margin: 0;
-  color: #fff;
-  background: #cd4535;
-  border: none;
-  padding: 10px;
-  border-radius: 4px;
-  border-bottom: 4px solid #b02818;
-  transition: all .2s ease;
-  outline: none;
-  text-transform: uppercase;
-  font-weight: 700;
-}
-
-.remove-image:hover {
-  background: #c13b2a;
-  color: #ffffff;
-  transition: all .2s ease;
-  cursor: pointer;
-}
-
-.remove-image:active {
-  border: 0;
-  transition: all .2s ease;
-}
-    </style>
-</head>
-<body>
-<script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<div class="file-upload">
-  <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
-
-  <div class="image-upload-wrap">
-    <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
-    <div class="drag-text">
-      <h3>Drag and drop a file or select add Image</h3>
-    </div>
-  </div>
-  <div class="file-upload-content">
-    <img class="file-upload-image" src="#" alt="your image" />
-    <div class="image-title-wrap">
-      <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
-    </div>
-  </div>
-</div>
-
-</body>
-<script>
-    function readURL(input) {
-  if (input.files && input.files[0]) {
-
-    var reader = new FileReader();
-
-    reader.onload = function(e) {
-      $('.image-upload-wrap').hide();
-
-      $('.file-upload-image').attr('src', e.target.result);
-      $('.file-upload-content').show();
-
-      $('.image-title').html(input.files[0].name);
-    };
-
-    reader.readAsDataURL(input.files[0]);
-
-  } else {
-    removeUpload();
+/*Animation Fade in from display:none*/
+@-webkit-keyframes fadeInFromNone {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  1% {
+    display: block;
+    opacity: 0;
+  }
+  100% {
+    display: block;
+    opacity: 1;
   }
 }
-
-function removeUpload() {
-  $('.file-upload-input').replaceWith($('.file-upload-input').clone());
-  $('.file-upload-content').hide();
-  $('.image-upload-wrap').show();
+@-moz-keyframes fadeInFromNone {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  1% {
+    display: block;
+    opacity: 0;
+  }
+  100% {
+    display: block;
+    opacity: 1;
+  }
 }
-$('.image-upload-wrap').bind('dragover', function () {
-        $('.image-upload-wrap').addClass('image-dropping');
+@-o-keyframes fadeInFromNone {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  1% {
+    display: block;
+    opacity: 0;
+  }
+  100% {
+    display: block;
+    opacity: 1;
+  }
+}
+@keyframes fadeInFromNone {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  1% {
+    display: block;
+    opacity: 0;
+  }
+  100% {
+    display: block;
+    opacity: 1;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+}
+/* link inherit*/
+a {
+  color: inherit;
+  text-decoration: inherit; /* no underline */
+  font-size: inherit;
+}
+/* grey backdrop of the site*/
+#backdrop {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background: black;
+  opacity: 0.6;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+/*wrap div for pop-up content*/
+.wrap-div {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  opacity: 1;
+  -webkit-animation: fadeInFromNone 0.5s ease-out;
+  -moz-animation: fadeInFromNone 0.5s ease-out;
+  -o-animation: fadeInFromNone 0.5s ease-out;
+  animation: fadeInFromNone 0.5s ease-out;
+}
+.new-ann-container {
+  position: relative;
+  border: 1px solid #d8dfea;
+  width: 500px;
+  padding: 30px 45px 35px 45px;
+  border-radius: 4px;
+  overflow: hidden;
+  font-family: "Roboto Condensed", sans-serif;
+  background: #e8eef2;
+  display: none;
+  border: 1px solid #1f6696;
+}
+.new-task-container {
+  position: relative;
+  border: 1px solid #d8dfea;
+  width: 400px;
+  padding: 30px 45px 35px 45px;
+  border-radius: 4px;
+  overflow: hidden;
+  font-family: "Roboto Condensed", sans-serif;
+  background: #e8eef2;
+  border: 1px solid #1f6696;
+  display: none;
+}
+/* close button for the previous container (box)*/
+.close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-size: 140%;
+  cursor: pointer;
+}
+/* box title (New Announcement) */
+.box-title {
+  display: block;
+  text-align: center;
+  font-weight: 900;
+  font-size: 200%;
+  margin-bottom: 40px;
+  color: #3b5998;
+}
+/* modify input */
+.new-title {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.new-task-container > div {
+  margin-bottom:10px;
+}
+.new-title input {
+  width: 100%;
+  cursor: text;
+  padding: 7px 3px;
+  border-bottom: 1px solid #ccc;
+  background: transparent;
+}
+/* effect for the input */
+.effect-1 ~ .focus-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #6d84b4;
+  transition: 0.4s;
+}
+.effect-1:focus ~ .focus-border {
+  width: 100%;
+  transition: 0.4s;
+}
+/* modify text-area */
+.new-info {
+  margin-bottom: 40px;
+}
+.new-info textarea {
+  width: 100%;
+  resize: vertical;
+  border: 1px solid #ccc;
+  transition: 0.4s;
+  margin-top: 7px;
+  border-radius: 5px;
+  padding: 3px;
+  background: transparent;
+}
+.new-info textarea:focus {
+  border: 3px solid #6d84b4;
+  background: white;
+}
+/* submit-button */
+.ann-submit {
+  width: 70%;
+  text-align: center;
+  letter-spacing: 0.5px;
+  border-radius: 2px;
+  color: white;
+  background: #6d84b4;
+  font-size: 120%;
+  padding: 10px 30px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+/* main-container */
+.container {
+  position: relative;
+  margin: 0 auto;
+  height: 100vh;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  display: flex;
+}
+/* top navigation bar on desktop */
+
+/* logo edit */
+.logo {
+  display: inline-block;
+  background-image: url("http://vhotelmanila.com/wp-content/uploads/2016/05/V-Hotel-Logo-3.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 70px;
+}
+/* dropdown icon hidden on desktop */
+#menu-icon {
+  display: none;
+}
+/* contain all the nav buttons */
+#tabs {
+  float: right;
+}
+/* edit nav Buttons */
+.navButton {
+  display: inline-block;
+  position: relative;
+  padding: 5px 15px;
+  line-height: 60px;
+  height: 70px;
+  text-decoration: none;
+  font-size: 110%;
+  font-weight: 700;
+  color: #142f5b;
+  cursor: pointer;
+}
+/* last Nav button  */
+.profile:hover {
+  background: #f0f0f5;
+  border-radius: 3px;
+}
+/* mobileNav contains only the logo on desktop */
+#mobileNav {
+  display: inline-block;
+}
+/* modify avatar */
+.avatar {
+  display: inline-block;
+  background-image: url("https://twibbon.com/content/images/system/default-image.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+  border-radius: 30px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+/* additional border in profile navButton */
+.profile .avatar {
+  border: 1px solid #f2fbfc;
+}
+.avatar > .status {
+  position: absolute;
+  right: 7px;
+  bottom: 7px;
+  font-size: 60%;
+}
+/* 2 dropdowns display inline-block */
+#status-dropdown,
+#dropdown {
+  position: relative;
+  display: inline-block;
+}
+/* overwrite the cursor pointer for navButton */
+#dropdown {
+  cursor: default;
+}
+/* style the dropdown content divs  */
+#dropdown-content,
+#status-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 5px;
+  z-index: 1;
+}
+#status-dropdown-content {
+  left: -15px;
+  font-weight: 400;
+}
+#dropdown-content {
+  right: -15px;
+  top: 60px;
+  font-weight: 500;
+}
+/* #dropdown:hover #dropdown-content,
+#status-dropdown:hover #status-dropdown-content {
+  display: block;
+}
+ */
+#dropdown-content a,
+#status-dropdown-content a {
+  color: black;
+  padding: 3px 9px;
+  text-decoration: none;
+  display: block;
+}
+#dropdown-content a:hover,
+#status-dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+#dropdown:hover .profile {
+  background: #f0f0f5;
+}
+#dropdown-content a > *,
+#status-dropdown-content a > * {
+  margin-right: 10px;
+}
+/* add effect for navButton on hover and focus */
+.underline a:before,
+.underline a:after {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #f37272;
+}
+.underline a:before {
+  opacity: 0;
+  -webkit-transform: translateY(-8px);
+  -ms-transform: translateY(-8px);
+  transform: translateY(-8px);
+  -webkit-transition: -webkit-transform 0s
+      cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    opacity 0s;
+  transition: transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s;
+}
+.underline a:after {
+  opacity: 0;
+  -webkit-transform: translateY(4px);
+  -ms-transform: translateY(4px);
+  transform: translateY(4px);
+  -webkit-transition: -webkit-transform 0.2s
+      cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    opacity 0.2s;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    opacity 0.2s;
+}
+.underline a:hover:before,
+.underline a:hover:after,
+.underline a:focus:before,
+.underline a:focus:after {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+}
+.underline a:hover:before,
+.underline a:focus:before {
+  -webkit-transition: -webkit-transform 0.2s
+      cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    opacity 0.2s;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    opacity 0.2s;
+}
+.underline a:hover:after,
+.underline a:focus:after {
+  -webkit-transition: -webkit-transform 0s 0.2s
+      cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    opacity 0s 0.2s;
+  transition: transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    opacity 0s 0.2s;
+}
+/* main app part */
+.app {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  flex: 1;
+  background: #f0f5f5;
+  border-radius: 5px 5px 0px 0px;
+  -moz-border-radius: 5px 5px 0px 0px;
+  -webkit-border-radius: 5px 5px 0px 0px;
+  overflow: hidden;
+  -webkit-box-shadow: 0px -1px 15px 1px rgba(212, 197, 212, 1);
+  -moz-box-shadow: 0px -1px 15px 1px rgba(212, 197, 212, 1);
+  box-shadow: 0px -1px 15px 1px rgba(212, 197, 212, 1);
+  opacity: 0.95;
+}
+/* section-button */
+.section-div {
+  width: 100%;
+  font-weight: 900;
+}
+.app img {
+  display: none;
+}
+.section {
+  width: calc(100%/3);
+  display: inline-block;
+  text-align: center;
+  padding: 8px 0;
+  float: left;
+  cursor: pointer;
+  font-family: "Raleway", sans-serif;
+  letter-spacing: 0.5px;
+}
+
+/* main */
+/* user and group chat boxes on left column */
+.user-box,
+.group-box {
+  padding: 20px 15px;
+  cursor: pointer;
+  width: 100%;
+}
+.user-box:hover,
+.group-box:hover {
+  background: #e0e2e2;
+}
+/* smaller div inside left chat box */
+.user-box .chat-info {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  width: calc(100% - 60px);
+}
+.group-box .chat-info {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  width: 100%;
+}
+.last-msg {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  float: left;
+  font-size: 85%;
+  color: #60666d;
+}
+/* modify colors for each status */
+.color-online {
+  color: #1bd139;
+}
+.color-idle {
+  color: #ccb80c;
+}
+.color-busy {
+  color: #cc0c0c;
+}
+.color-invisible {
+  color: #adbabc;
+}
+/* icon size */
+.status {
+  font-size: 70%;
+}
+/* timestamp of the last msg */
+.timestamp {
+  font-size: 80%;
+  position: absolute;
+  right: 0;
+  color: #60666d;
+}
+/* modify username and group names left column */
+.username {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-right: 10px;
+}
+.groupname {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 3px;
+}
+/* main div where contents are shown */
+.main {
+
+  display: flex;
+  height: 85%;
+  width: 100%;
+  border: 1px solid antiquewhite;
+    background: whitesmoke;
+    transition: all 0.3s;
+}
+.main-left {
+  display: inline-block;
+  width: 30%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-right: 1px solid #d9e4f9;
+}
+.main-right {
+  display: inline-block;
+  float: left;
+  display: flex;
+  width: 70%;
+  flex-flow: column;
+}
+/* wrap div of displayer in right column */
+.header-displayer {
+  padding: 5px;
+  min-height: 55px;
+  flex-flow: row;
+  display: flex;
+  position: relative;
+  border-bottom: 1px solid #d9e4f9;
+  align-items: center;
+  justify-content: center;
+}
+.back-button {
+  z-index: 3;
+  display: none;
+  position: absolute;
+  left: 10px;
+  color: #3b5998;
+  cursor: pointer;
+}
+#back-button {
+  font-size: 200%;
+  vertical-align: middle;
+  margin-right: 3px;
+}
+/* contain id and status displayers */
+.id-status {
+  text-align: center;
+  width: 100%;
+}
+.id-displayer {
+  position: relative;
+  font-size: 120%;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* specify when display groupname on mobile*/
+.id-displayer-group {
+  font-size: 90% !important;
+  left: 20%;
+  width: 65%;
+}
+.status-displayer {
+  font-size: 80%;
+  color: #60666d;
+}
+/* middle div of right column, display chat msg */
+.chat-box {
+  flex: 1;
+  padding: 20px;
+  border-bottom: 1px solid #d9e4f9;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+/* display message as default */
+.message-box {
+  display: block;
+}
+.message-div {
+  display: flex;
+  width: 100%;
+}
+.new-msg {
+  animation-duration: 0.1s;
+  animation-delay: 0.05s;
+  animation-iteration-count: 1;
+}
+.msg-send {
+  justify-content: flex-end;
+  overflow-wrap: break-word;
+}
+.msg-send .chat-message {
+  background: lightgray;
+  color: black;
+}
+.msg-receive .chat-message {
+  background: #d8dfea;
+}
+.msg-receive {
+  justify-content: flex-start;
+}
+.chat-message {
+  max-width: 80%;
+  margin-bottom: 1px;
+
+  padding: 6px 12px;
+  background: #d8dfea;
+}
+/* chat input box */
+.input-box {
+  display: flex;
+}
+.input-box input {
+  background: lightgray;
+  flex: 15;
+  padding: 5px 10px;
+  cursor: text;
+  vertical-align: middle;
+  transition: 1s;
+}
+.input-box input:focus {
+  background: lightpink
+  border-radius: 5px;
+}
+/* botton-icon */
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  width: 10%;
+  cursor: pointer;
+  color: #3c4a4f;
+  padding: 15px 5px;
+}
+.icon:hover {
+    background:#d5dfef;
+}
+#send {
+  color: #16afe0 !important;
+}
+/* display user chat column as default */
+.user-chat-column {
+  display: block;
+}
+.group-chat-column {
+  display: none;
+}
+/* announcement column */
+.ann-column {
+  display: none;
+}
+/* make new ann div */
+.make-ann {
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ann-button {
+  padding: 10px 25px;
+  border: 1px outset #6c888e;
+  font-family: "Roboto Condensed", sans-serif;
+  border-radius: 2px;
+  cursor: pointer;
+  color: white;
+  background: #337ab7;
+}
+.ann-button:hover {
+  /*   -webkit-box-shadow: 5px 4px 16px 0px rgba(217, 176, 217, 1);
+  -moz-box-shadow: 5px 4px 16px 0px rgba(217, 176, 217, 1);
+  box-shadow: 5px 4px 16px 0px rgba(217, 176, 217, 1); */
+  /*   background-position: right center; */
+}
+/* announcement div */
+.ann-box {
+  border-top: 1px solid #d9e4f9;
+  border-bottom: 1px solid #d9e4f9;
+  padding: 15px;
+  cursor: pointer;
+  width: 100%;
+}
+.ann-box:hover {
+  background: #e0e2e2;
+}
+/* announcement title */
+.ann-title {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 110%;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* announcement details in short */
+.ann-intro {
+  font-size: 85%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@media (max-width: 1300px) {
+  .container {
+    width: 85%;
+  }
+}
+@media (max-width: 1000px) {
+  html {
+    overflow: hidden;
+    height: 100%;
+  }
+  body {
+    background: none;
+    height: 100%;
+    overflow: hidden;
+  }
+  .container {
+    width: 100%;
+  }
+  .topnav {
+    padding: 0;
+  }
+  .app {
+    border-radius: 0px;
+    opacity: 1;
+  }
+  #tabs {
+    display: none;
+    flex-direction: column-reverse;
+    position: absolute;
+    width: 80vw;
+    height: 100%;
+    z-index: 10;
+    -webkit-border-bottom-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-bottomright: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    -webkit-box-shadow: 0px 32px 36px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 32px 36px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 32px 36px 0px rgba(0, 0, 0, 0.75);
+  }
+  .space {
+    flex: 1;
+    background: #f4fafc;
+  }
+  .navButton {
+    background: #f4fafc;
+    color: black;
+  }
+  .navButton > * {
+    font-family: "Patua One", cursive;
+    font-weight: 400;
+    font-size: 90%;
+  }
+  #mobileNav {
+    position: relative;
+    -moz-transition: all 0.5s ease-in;
+    /* WebKit */
+    -webkit-transition: all 0.5s ease-in;
+    /* Opera */
+    -o-transition: all 0.5s ease-in;
+    /* Standard */
+    transition: all 0.5s ease-in;
+    z-index: 3;
+    display: none;
+    padding: 5px;
+  }
+  #dropdown i {
+    display: none;
+  }
+  .underline a:before,
+  .underline a:after {
+    height: 0;
+  }
+  #dropdown-content {
+    left: 0;
+  }
+  .section {
+    font-size: 90%;
+    font-weight: 500;
+    border: none;
+    background: inherit;
+    color: #001230;
+    font-family: "Patua One", cursive;
+  }
+  .pushed {
+    border-bottom: 2px solid #8b9dc3;
+  }
+  .section-div {
+    width: calc(100% - 86px);
+    margin: 0 auto;
+    position: relative;
+    padding-top: 5px;
+  }
+  #status-dropdown,
+  #dropdown {
+    display: block;
+    text-align: center;
+  }
+  #status-dropdown-content,
+  #dropdown-content {
+    text-align: start;
+    left: 0;
+    right: 0;
+  }
+  .profile {
+    height: auto;
+    border-bottom: 1px solid #d9e4f9;
+  }
+  .avatar {
+    position: relative;
+  }
+  .avatar .status {
+    right: 0;
+    bottom: 0;
+  }
+  .app img {
+    display: block;
+    position: absolute;
+    padding: 4px 7px;
+    height: 33px;
+    box-sizing: content-box;
+    width: auto;
+  }
+  .main-left {
+    position: absolute;
+    background: #f0f5f5;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
+  .main-right {
+    height: 100%;
+    position: absolute;
+    left: 100%;
+    background: #f0f5f5;
+    width: 100%;
+  }
+  .new-ann-container {
+    max-width: 400px;
+    width: auto;
+    padding: 15px 20px 20px 20px;
+  }
+  .box-title {
+    font-size: 150%;
+  }
+  .new-title,
+  .new-info,
+  .box-title {
+    margin-bottom: 10px;
+  }
+  .ann-title {
+    font-family: "Patua One", cursive;
+    font-weight: 400;
+  }
+  .back-button {
+    display: block;
+  }
+  .back-button span {
+    vertical-align: middle;
+  }
+  #menu-icon {
+    display: block;
+  }
+  .wrap-div {
+    padding: 5px;
+  }
+  .input-box input {
+    flex: 9;
+  }
+}
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function(event) {
+  var key =
+    "http://sandbox.api.simsimi.com/request.p?key=ebf0dfaf-719b-440c-9b30-4d7ead297e2e&lc=en&ft=1.0&text=";
+
+  var objDiv = document.getElementById("chat-box");
+  objDiv.scrollTop = objDiv.scrollHeight;
+  // responsive nav
+
+  document.getElementById("menu-icon").onclick = function() {
+    let displayValue = document.getElementById("tabs").style.display;
+    if (displayValue !== "flex") {
+      console.log("display tabs");
+      document.getElementById("backdrop").style.display = "block";
+      document.getElementById("tabs").style.display = "flex";
+    }
+  };
+
+  // $(window).resize(function() {
+  //   if (window.innerWidth > 1000) {
+  //     $(".navButton").css("display", "inline-block");
+  //   } else {
+  //     $(".navButton").css("display", "none");
+  //   }
+  // });
+
+  var navUsername = document.getElementById("nav-username");
+
+  window.onclick = function(event) {
+    // console.log(event.target);
+    if (document.getElementById("dropdown").contains(event.target))
+      document.getElementById("dropdown-content").style.display = "block";
+    else document.getElementById("dropdown-content").style.display = "none";
+
+    if (document.getElementById("status-dropdown").contains(event.target))
+      document.getElementById("status-dropdown-content").style.display =
+        "block";
+    else
+      document.getElementById("status-dropdown-content").style.display = "none";
+
+    if (document.getElementById("tabs").style.display === "flex") {
+      if (document.getElementById("backdrop").contains(event.target)) {
+        document.getElementById("tabs").style.display = "none";
+        document.getElementById("backdrop").style.display = "none";
+      }
+    }
+  };
+  //button push
+
+  var lastButtonPushed = document.getElementById("section1");
+  var section = document.getElementsByClassName("section");
+
+  for (var i = 0; i < section.length; i++) {
+    // Here we have the same onclick
+
+    section[i].addEventListener("click", function(event) {
+      var thisButtonPushed = event.target;
+      console.log(lastButtonPushed);
+      if (lastButtonPushed !== thisButtonPushed) {
+        lastButtonPushed.classList.toggle("pushed");
+        thisButtonPushed.classList.toggle("pushed");
+        lastButtonPushed.classList.toggle("unpushed");
+        thisButtonPushed.classList.toggle("unpushed");
+        lastButtonPushed = thisButtonPushed;
+      }
     });
-    $('.image-upload-wrap').bind('dragleave', function () {
-        $('.image-upload-wrap').removeClass('image-dropping');
+  }
+
+  //section display
+
+  document.getElementById("section1").addEventListener("click", function() {
+    document.querySelector(".user-chat-column").style.display = "block";
+    document.querySelector(".group-chat-column").style.display = "none";
+    document.querySelector(".ann-column").style.display = "none";
+    document.querySelector(".input-box").style.display = "flex";
+    if (window.innerWidth < 1000) {
+      document
+        .querySelector(".id-displayer")
+        .classList.remove("id-displayer-group");
+    }
+  });
+
+  document.getElementById("section2").addEventListener("click", function() {
+    document.querySelector(".user-chat-column").style.display = "none";
+    document.querySelector(".group-chat-column").style.display = "block";
+    document.querySelector(".ann-column").style.display = "none";
+    document.querySelector(".input-box").style.display = "flex";
+    if (window.innerWidth < 1000) {
+      document
+        .querySelector(".id-displayer")
+        .classList.add("id-displayer-group");
+    }
+  });
+
+  document.getElementById("section3").addEventListener("click", function() {
+    document.querySelector(".user-chat-column").style.display = "none";
+    document.querySelector(".group-chat-column").style.display = "none";
+    document.querySelector(".ann-column").style.display = "block";
+    document.querySelector(".input-box").style.display = "none";
+    if (window.innerWidth < 1000) {
+      document
+        .querySelector(".id-displayer")
+        .classList.remove("id-displayer-group");
+    }
+  });
+
+  document.querySelector(".back-button").addEventListener("click", function() {
+    document.querySelector(".main").style.transform = "translateX(0)";
+    document.querySelector(".section-div").style.display = "block";
+  });
+
+  for (let val of document.getElementsByClassName("user-box")) {
+    val.addEventListener("click", function(event) {
+      let element = val.getElementsByTagName("span");
+      document.querySelector(".id-displayer").textContent =
+        element[0].textContent;
+
+      document.querySelector(".status-displayer").style.display = "block";
+      document.querySelector(".ann-info").style.display = "none";
+      document.querySelector(".message-box").style.display = "block";
+
+      if (window.innerWidth < 1000) {
+        document.querySelector(".main").style.transform = " translateX(-100%)";
+        document.querySelector(".section-div").style.display = "none";
+      }
+    });
+  }
+
+  for (let val of document.getElementsByClassName("group-box")) {
+    val.addEventListener("click", function() {
+      let element = val.getElementsByTagName("span");
+      document.querySelector(".id-displayer").textContent =
+        element[0].textContent;
+
+      document.querySelector(".status-displayer").style.display = "none";
+      document.querySelector(".ann-info").style.display = "none";
+      document.querySelector(".message-box").style.display = "block";
+
+      if (window.innerWidth < 1000) {
+        document.querySelector(".main").style.transform = " translateX(-100%)";
+        document.querySelector(".section-div").style.display = "none";
+      }
+    });
+  }
+
+  function openAnnContainer() {
+    document.getElementById("backdrop").style.display = "block";
+    document.querySelector(".wrap-div").style.display = "flex";
+    document.querySelector(".wrap-div").style.opacity = "1";
+    document.querySelector(".new-ann-container").style.display = "block";
+  }
+
+  function closeAnnContainer() {
+    document.getElementById("backdrop").style.display = "none";
+    document.querySelector(".wrap-div").style.display = "none";
+    document.querySelector(".wrap-div").style.opacity = "0";
+    document.querySelector(".new-ann-container").style.display = "none";
+  }
+
+  function openTaskContainer() {
+    document.getElementById("backdrop").style.display = "block";
+    document.querySelector(".wrap-div").style.display = "flex";
+    document.querySelector(".wrap-div").style.opacity = "1";
+    document.querySelector(".new-task-container").style.display = "block";
+  }
+
+  function closeTaskContainer() {
+    document.getElementById("backdrop").style.display = "none";
+    document.querySelector(".wrap-div").style.display = "none";
+    document.querySelector(".wrap-div").style.opacity = "0";
+    document.querySelector(".new-task-container").style.display = "none";
+  }
+
+  function sendMsg() {
+    let val = document.getElementById("inputbox").value;
+    console.log("val =" + val);
+    let textnode = document.createTextNode(val);
+
+    let innerDiv = document.createElement("div");
+    let outerDiv = document.createElement("div");
+    let classlist = [
+      "message-div",
+      "animated",
+      "slideInRight",
+      "new-msg",
+      "msg-send"
+    ];
+    innerDiv.classList.add("chat-message");
+    outerDiv.classList.add(...classlist);
+    innerDiv.appendChild(textnode);
+    outerDiv.appendChild(innerDiv);
+    document.querySelector(".chat-box").appendChild(outerDiv);
+
+    document.getElementById("inputbox").value = "";
+
+    var objDiv = document.getElementById("chat-box");
+    objDiv.scrollTop = objDiv.scrollHeight;
+  }
+  // var api = key + val;
+  // $.getJSON(api, function(data) {
+  //   var answer = data.response;
+  //   $(".chat-box").append(
+  //     '<div class="message-div animated new-msg slideInLeft msg-receive"> <div class="chat-message ">' +
+  //     answer +
+  //     "</div></div>"
+  //   );
+  // });
+
+  document.querySelector(".ann-button").addEventListener("click", function() {
+    openAnnContainer();
+  });
+
+  document
+    .querySelector(".new-ann-container")
+    .addEventListener("click", function(event) {
+      console.log(event.target);
+      if (
+        event.target === document.getElementById("close") ||
+        event.target === document.getElementById("close").childNodes[0]
+      )
+        closeAnnContainer();
+
+      if (event.target === document.querySelector(".ann-submit")) {
+        let annTitle = document.querySelector(".ann-input-title").value;
+        let annTextarea = document.getElementById("ann-textarea").value;
+        console.log(annTitle);
+        console.log(annTextarea);
+        if (annTitle !== "" && annTextarea !== "") {
+          let boxDiv = document.createElement("div");
+          let titleDiv = document.createElement("div");
+          let introDiv = document.createElement("div");
+          boxDiv.classList.add("ann-box");
+          titleDiv.classList.add("ann-title");
+          introDiv.classList.add("ann-intro");
+          let textnode1 = document.createTextNode(annTitle);
+          let textnode2 = document.createTextNode(annTextarea);
+          titleDiv.appendChild(textnode1);
+          introDiv.appendChild(textnode2);
+          boxDiv.appendChild(titleDiv);
+          boxDiv.appendChild(introDiv);
+
+          let list = document.querySelector(".ann-list");
+          list.insertBefore(boxDiv, list.childNodes[0]);
+          closeAnnContainer();
+          document.querySelector(".ann-input-title").value = "";
+          document.getElementById("ann-textarea").value = "";
+
+          let url =
+            "http://localhost:8080/WebApplication1/ws/announcement?title=" +
+            annTitle +
+            "&description=" +
+            annTextarea;
+          fetch(url, {
+            method: "POST"
+          }).then(response => response.json());
+        }
+      }
+    });
+
+
+
+  document.querySelector('.input-box').addEventListener("click", function(event) {
+    console.log(event.target);
+    if (
+      event.target === document.getElementById("task") ||
+      event.target === document.getElementById("task").childNodes[0] ||
+      event.target === document.getElementById("task").parentElement
+    )
+      openTaskContainer();
+  });
+
+  document.querySelector("#inputbox").addEventListener("keypress", function(e) {
+    var key = e.which || e.keyCode;
+    if (key === 13) {
+      sendMsg();
+    }
+  });
+
+  document.querySelector("#send").addEventListener("click", function(e) {
+    sendMsg();
+  });
+
+  document
+    .querySelector(".ann-list")
+    .addEventListener("click", function(event) {
+      if (window.innerWidth < 1000) {
+        document.querySelector(".main").style.transform = " translateX(-100%)";
+        document
+          .querySelector(".id-displayer")
+          .classList.add("id-displayer-group");
+        document.querySelector(".section-div").style.display = "none";
+      }
+      let el;
+      console.log(event.target);
+      if (event.target.classList.contains("ann-box")) el = event.target;
+      if (
+        event.target.classList.contains("ann-title") ||
+        event.target.classList.contains("ann-intro")
+      )
+        el = event.target.parentElement;
+      let title, intro;
+      var children = el.childNodes;
+      title = children[0].textContent;
+      intro = children[1].textContent;
+      console.log("title = " + title);
+      console.log("intro = " + intro);
+      document.querySelector(".id-displayer").textContent = title;
+      document.querySelector(".status-displayer").style.display = "none";
+      document.querySelector(".message-box").style.display = "none";
+
+      document.querySelector(".ann-info").style.display = "block";
+
+      document.querySelector(".ann-info").textContent = intro;
+    });
+
+  document
+    .querySelector("#status-dropdown-content a")
+    .addEventListener("click", function(event) {
+      let color;
+      console.log(event.target.tagName);
+      if (event.target.tagName === "A") {
+        let child = event.target.childNodes;
+        let child2 = child[1].childNodes;
+        color = child2[0].style.color;
+        console.log(child[1]);
+      } else {
+        color = event.target.style.color;
+        console.log(event.target);
+      }
+      document.querySelector(".avatar .status").style.color = color;
+    });
 });
 </script>
+    <style>
+#n1 {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+#n2 {
+  float: left;
+}
+
+#a1 {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 86px;
+  text-decoration: none;
+}
+
+#a1:hover {
+  background-color: #111;
+}
+</style>
+</head>
+<body>
+
+    <ul id="n1"><div style="width:100%">
+    <div style="float:left;width: 15%">
+   <span style="color:white;
+  padding: 14px 55px;font-size:23px;
+  "> CVR Hub</span>
+        </div>
+    <div style="float:right;width: 85%">
+    <li id="n2"><a class="active" id="a1" href="{% url 'mainapp:index' %}">DISCUSSION</a></li>
+  <li id="n2"><a id="a1"  href="#home">PROFILE</a></li>
+  <li id="n2"><a id="a1" href="#news">INFORMATION</a></li>
+     <li id="n2"><a id="a1" href="{% url 'mainapp:logout' %}">LOGOUT</a></li>
+  </div>
+</div>
+</ul>
+    <div class="wrap-div">
+      <div class="new-ann-container">
+        <i class="fa fa-times close" id="close" aria-hidden="true"></i>
+        <span class="box-title"> New Announcement</span>
+        <div class="new-title">
+          <span>Title</span>
+          <input class="ann-input-title effect-1" type="text" placeholder="Announcement title">
+          <span class="focus-border">
+
+
+    </div>
+         <div class="new-info">
+         <span>Details</span>
+          <textarea name="" id="ann-textarea" cols="30" rows="8" placeholder="Announcement details"></textarea></div>
+        <div class="ann-submit">Submit</div>
+      </div>
+      <div class="new-task-container">
+        <i class="fa fa-times close" id="close2" aria-hidden="true"></i>
+        <span class="box-title"> New Task</span>
+        <div class="new-title">
+          <span>Task name</span>
+          <input class="effect-1" type="text">
+          <span class="focus-border">
+
+
+    </div>
+          <div class="new-title">
+          <span>Location</span>
+          <input class="effect-1" type="text" placeholder="">
+          <span class="focus-border">
+
+
+    </div>
+            <div class="new-title">
+          <span>Time</span>
+          <input class="effect-1" type="text">
+          <span class="focus-border">
+
+
+    </div>
+
+               <div class="new-info">
+         <span>Details</span>
+          <textarea name="" id="task-textarea" rows="3" placeholder="Announcement details"></textarea></div>
+        <div class="ann-submit">Send</div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="topnav">
+        <div id="mobileNav">
+
+        </div>
+
+      </div>
+      <div class="app">
+        <img id="menu-icon" src="http://vhotelmanila.com/wp-content/uploads/2016/05/V-Hotel-Logo-3.png">
+        <div class="section-div">
+
+          <div class="section pushed" id="section1"></div>
+          <div class="section unpushed" id="section2"></div>
+          <div class="section unpushed" id="section3"></div>
+        </div>
+        <div class="main">
+          <div class="main-left">
+            <div class="user-chat-column">
+
+              <div class="user-box">
+                <div class="avatar"></div>
+                <div class="chat-info">
+                  <div class="id"> <span class="username"> harsh</span> <i class="fa fa-circle status color-online" aria-hidden="true"></i></div>
+                  <div class="timestamp">17:30</div>
+                  <div class="last-msg">hello</div>
+                </div>
+              </div>
+
+            </div>
+            <div class="group-chat-column">
+              <div class="group-box">
+
+              </div>
+            </div>
+            <div class="ann-column">
+              <div class="make-ann">
+                <div class="ann-button"></div>
+              </div>
+
+            </div>
+          </div>
+          <div class="main-right">
+
+            <div class="header-displayer">
+              <div class="back-button"><i id="back-button" class="fa fa-chevron-left" aria-hidden="true"></i><span>Back</span> </div>
+              <div class="id-status">
+
+                <div class="id-displayer announcement"> harsh</div>
+                <div class="status-displayer">Active now</div>
+              </div>
+            </div>
+            <div class="chat-box" id="chat-box">
+              <div class="message-box">
+
+
+                <div class="message-div msg-send">
+                  <div class="chat-message float-right">Hello  harsh</div>
+                </div>
+
+
+              </div>
+              <div class="ann-info"> </div>
+            </div>
+
+            <div class="input-box"><input id="inputbox" type="text" placeholder="Type a message">
+
+              <div class="icon"><i id="task" class="fas fa-tasks"></i></div>
+              <div class="icon"><i class="far fa-image"></i></div>
+              <div class="icon"><i id="file" class="fa fa-file" aria-hidden="true"></i></div>
+              <div class="icon"><i id="microphone" class="fa fa-microphone" aria-hidden="true"></i></div>
+              <div class="icon">
+                <i id="send" class="fa fa-paper-plane" aria-hidden="true"></i></div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+</body>
 </html>
