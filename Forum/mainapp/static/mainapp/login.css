@@ -1,29 +1,23 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,100,200,300);
-* {
-  margin: 0;
-  padding: 0; }
+
 
 a {
   color: #666;
   text-decoration: none; }
-  a:hover {
-    color: #4FDA8C; }
+
 
 input {
   font: 16px/26px "Raleway", sans-serif; }
 
-body {
-  color: #666;
-  background-color: #333;
-  font: 16px/26px "Raleway", sans-serif; }
 
 .form-wrap {
+  position: relative;
+  float: right;
+  height: 100vh;
   background-color: #fff;
-  width: 320px;
+  width: 30%;
   margin: 3em auto;
-  box-shadow: 0px 1px 8px #BEBEBE;
-  -webkit-box-shadow: 0px 1px 8px #BEBEBE;
-  -moz-box-shadow: 0px 1px 8px #BEBEBE; }
+   }
   .form-wrap .tabs {
     overflow: hidden; }
     .form-wrap .tabs h3 {
@@ -110,3 +104,4 @@ body {
     .form-wrap .help-text p {
       text-align: center;
       font-size: 14px; }
+
