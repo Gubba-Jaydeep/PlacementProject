@@ -117,6 +117,7 @@ def incQuestionVote(request):
     qID=request.COOKIES.get('qID')
     Forum().questionVote(request.COOKIES.get('userName'),int(qID),'yes')
     return getQuestionDetails(request, qID)
+
 def decQuestionVote(request):
     qID=request.COOKIES.get('qID')
     Forum().questionVote(request.COOKIES.get('userName'),int(qID),'no')
@@ -126,7 +127,17 @@ def incAnswerVote(request,aID):
     qID = request.COOKIES.get('qID')
     Forum().answerVote(request.COOKIES.get('userName'),int(aID), int(qID), 'yes')
     return getQuestionDetails(request,qID)
+
 def decAnswerVote(request,aID):
     qID = request.COOKIES.get('qID')
     Forum().answerVote(request.COOKIES.get('userName'),int(aID), int(qID), 'no')
     return getQuestionDetails(request,qID)
+
+def profile(request):
+    user = Forum().getUser(str(request.COOKIES.get('userName')))
+    return render(request, 'mainapp/profile.html', {'user': user})
+
+def info(request):
+    #we should create another collection of information which contains all messages(info) sent by all teachers..
+    #so single db object is sufficient with array of msgs(each with userameof teacher(not anonymous),date,text,img=none(default) etc)
+    return render(request,'mainapp/info.html',{})

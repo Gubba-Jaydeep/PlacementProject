@@ -16,5 +16,6 @@ urlpatterns=[
     re_path(r'^(?P<qID>[0-9]+)/$', views.getQuestionDetails, name="getQuestionDetails"),
     path("<int:aID>/ok",views.incAnswerVote,name="incAnswerVote"),
     path("<int:aID>/notok",views.decAnswerVote,name="decAnswerVote"),
-
+    path("profile", views.profile, name="profile"),
+    path("info",views.info, name="info"),
 ]

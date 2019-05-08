@@ -12363,9 +12363,9 @@ a.text-dark:hover {
   "> CVR Hub</span>
         </div>
     <div style="float:right;width: 85%">
-    <li id="n2"><a class="active" id="a1" href="#contact">DISCUSSION</a></li>
-  <li id="n2"><a id="a1"  href="#home">PROFILE</a></li>
-  <li id="n2"><a id="a1" href="#news">INFORMATION</a></li>
+    <li id="n2"><a class="active" id="a1" href="{% url 'mainapp:index' %}">DISCUSSION</a></li>
+  <li id="n2"><a id="a1"  href="{% url 'mainapp:profile' %}">PROFILE</a></li>
+  <li id="n2"><a id="a1" href="{% url 'mainapp:info' %}">INFORMATION</a></li>
      <li id="n2"><a id="a1" href="{% url 'mainapp:logout' %}">LOGOUT</a></li>
   </div>
 </div>
@@ -12405,12 +12405,12 @@ a.text-dark:hover {
 									<h6>Hello Everybody, i am</h6>
 									<h3>HARSH KUMAR</h3>
 									<h4>4th YEAR , CSE</h4>
-									<h4>16B81A0562</h4>
+									<h4>{{ user.uID }}</h4>
 									<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis quis architecto expedita distinctio omnis sint, illum modi ea voluptate doloremque voluptatum tenetur dicta esse. Vero ea quam eum veniam consequuntur.</p>
 									<ul class="list basic_info">
 										<li><a href="#"><i class="lnr lnr-calendar-full"></i> 19 June 1997</a></li>
-										<li><a href="#"><i class="lnr lnr-phone-handset"></i> +91 7893572246</a></li>
-										<li><a href="#"><i class="lnr lnr-envelope"></i> harshkumarlaldas199797@gmail.com</a></li>
+										<li><a href="#"><i class="lnr lnr-phone-handset">TYPE</i>{{ user.type }}</a></li>
+										<li><a href="#"><i class="lnr lnr-envelope"></i> {{ user.email }}</a></li>
 										<li><a href="#"><i class="lnr lnr-home"></i> HYDERABAD</a></li>
 									</ul>
 									<ul class="list personal_social">
