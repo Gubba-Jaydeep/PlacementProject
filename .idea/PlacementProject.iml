@@ -6,7 +6,7 @@
         <option name="rootFolder" value="$MODULE_DIR$/Forum" />
         <option name="settingsModule" value="Forum/settings.py" />
         <option name="manageScript" value="manage.py" />
-        <option name="environment" value="&lt;map/&gt;" />
+        <option name="environment" value="&lt;map&gt;&#10;  &lt;entry&gt;&#10;    &lt;string&gt;Path&lt;/string&gt;&#10;    &lt;string&gt;C:\Program Files (x86)\Python36-32\Scripts\;C:\Program Files (x86)\Python36-32\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Intel\iCLS Client\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Android\android_sdk\platform-tools;C:\Program Files\Android\android_sdk\tools;C:\Program Files\Anaconda3;C:\Program Files\Anaconda3\Scripts;C:\Program Files\Anaconda3\Library\bin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Brackets\command;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Git\cmd;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\nodejs\;C:\WINDOWS\system32\config\systemprofile\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Users\Harsh Kumar\AppData\Local\Programs\Python\Python36\Scripts\;C:\Users\Harsh Kumar\AppData\Local\Programs\Python\Python36\;C:\Users\Harsh Kumar\Anaconda3;C:\Users\Harsh Kumar\Anaconda3\Scripts;C:\Users\Harsh Kumar\Anaconda3\Library\bin;C:\Program Files\Java\jdk1.8.0_131\bin;C:\Users\Harsh Kumar\AppData\Local\Microsoft\WindowsApps;C:\Users\Harsh Kumar\AppData\Local\atom\bin;&amp;quot;C:\Program Files (x86)\Python36-32\Scripts;C:\Program Files (x86)\Python36-32\Lib\site-packages\django\bin&amp;quot;;C:\Users\Harsh Kumar\AppData\Roaming\npm&lt;/string&gt;&#10;  &lt;/entry&gt;&#10;&lt;/map&gt;" />
         <option name="doNotUseTestRunner" value="false" />
         <option name="trackFilePattern" value="" />
       </configuration>
@@ -14,7 +14,7 @@
   </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$" />
-    <orderEntry type="jdk" jdkName="Python 3.6.5 (C:\Users\mohan\AppData\Local\Programs\Python\Python36\python.exe)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.6.5 (C:\Program Files (x86)\Python36-32\python.exe)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TemplatesService">
@@ -26,7 +26,7 @@
     </option>
   </component>
   <component name="TestRunnerService">
-    <option name="projectConfiguration" value="pytest" />
+    <option name="projectConfiguration" value="py.test" />
     <option name="PROJECT_TEST_RUNNER" value="py.test" />
   </component>
 </module>

@@ -1242,7 +1242,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     });
 });
 </script>
-    <style>
+
+<style>
 #n1 {
   list-style-type: none;
   margin: 0;
@@ -1281,6 +1282,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   <li id="n2"><a id="a1"  href="{% url 'mainapp:profile' %}">PROFILE</a></li>
   <li id="n2"><a id="a1" href="{% url 'mainapp:info' %}">INFORMATION</a></li>
      <li id="n2"><a id="a1" href="{% url 'mainapp:logout' %}">LOGOUT</a></li>
+
   </div>
 </div>
 </ul>
@@ -1353,14 +1355,32 @@ document.addEventListener("DOMContentLoaded", function(event) {
             <div class="user-chat-column">
 
               <div class="user-box">
-                <div class="avatar"></div>
+
                 <div class="chat-info">
-                  <div class="id"> <span class="username"> harsh</span> <i class="fa fa-circle status color-online" aria-hidden="true"></i></div>
-                  <div class="timestamp">17:30</div>
-                  <div class="last-msg">hello</div>
+                  <div class="id"> LINK FOR NOTES</div>
+                  <div class="timestamp"></div>
+                    <a href="http://cvr.ac.in/cse/stud/eresource.html">Click Here:</a>
+
                 </div>
               </div>
+                <div class="user-box">
 
+                <div class="chat-info">
+                  <div class="id"> CODING LINKS</div>
+                  <div class="timestamp"></div>
+                    <a href="http://hackerrank.com">HACKER-RANK</a>
+
+                </div>
+              </div>
+                 <div class="user-box">
+
+                <div class="chat-info">
+                  <div class="id"> </div>
+                  <div class="timestamp"></div>
+                    <a href="http://codechef.com">CODECHEF</a>
+
+                </div>
+              </div>
             </div>
             <div class="group-chat-column">
               <div class="group-box">
@@ -1380,8 +1400,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
               <div class="back-button"><i id="back-button" class="fa fa-chevron-left" aria-hidden="true"></i><span>Back</span> </div>
               <div class="id-status">
 
-                <div class="id-displayer announcement"> harsh</div>
-                <div class="status-displayer">Active now</div>
+                <div class="id-displayer announcement"> CVR HUB</div>
+                <div class="status-displayer"></div>
               </div>
             </div>
             <div class="chat-box" id="chat-box">
@@ -1399,14 +1419,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
             <div class="input-box"><input id="inputbox" type="text" placeholder="Type a message">
 
-              <div class="icon"><i id="task" class="fas fa-tasks"></i></div>
-              <div class="icon"><i class="far fa-image"></i></div>
-              <div class="icon"><i id="file" class="fa fa-file" aria-hidden="true"></i></div>
-              <div class="icon"><i id="microphone" class="fa fa-microphone" aria-hidden="true"></i></div>
+
               <div class="icon">
                 <i id="send" class="fa fa-paper-plane" aria-hidden="true"></i></div>
 
             </div>
+              <div >UPLOAD FILE:<form action="">
+  <input type="file" name="pic" accept="image/* pdf">
+  <input type="submit" placeholder="SEND">
+</form>
+</div>
           </div>
 
         </div>
