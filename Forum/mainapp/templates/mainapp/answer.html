@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{% static 'mainapp/ans.css' %}">
     <title>Answer</title>
 </head>
-<body>
+<body style="background-color: #2e2e31">
 <div>
     <ul id="n1">
     <div style="width:100%">
@@ -27,24 +27,24 @@
     </div>
 </ul>
 </div>
-    <div class="col-md-12" id="ques_box">
-        <h1 id="ques_heading">Your Question</h1>
+    <div class="col-md-12" id="ques_box" >
+        <h3 id="ques_heading" style="background-color: #2e2e31">Your Question</h3>
         <h4>{{ question.date }}</h4>
-        <p id="ques">{{ question.question }}</p>
+        <p id="ques" style="color: white;">{{ question.question }}</p>
         <div id="ques">
                 <a class="btn-hover" style="color: green" href="{% url 'mainapp:incQuestionVote' %}"><i class="fa fa-thumbs-up" style="padding: 10px;">{{ question.votes.yes|length }}</i></a>
                 <a class="btn-hover" style="color: red" href="{% url 'mainapp:decQuestionVote' %}"><i class="fa fa-thumbs-down" style="padding: 10px;">{{ question.votes.no|length }}</i></a>
         </div>
     </div>
     <div class="col-md-12" id="ans_heading1">
-        <h1 id="ans_head">Answers:</h1>
+        <h3 id="ans_head" style="background-color: #2e2e31">Answers</h3>
         <div  class="col-md-12" id="ans_heading" style="overflow-y:scroll; height:400px;">
         {% for ans in question.answers %}
-        <div class="col-md-12" id="ans_box">
+        <div class="col-md-12" id="ans_box" style="background-color: ghostwhite;">
                 <h4>{{ ans.date }}</h4>
             <p id="answer">{{ ans.answer }}</p>
             <br>
-            <p id="answer">answered by :{{ ans.type }}</p>
+            <b id="answer" style="text-transform: capitalize;">ANSWERED BY :{{ ans.type }}</b>
             <div id="ques">
                     <a class="btn-hover" style="color: green" href="{% url 'mainapp:incAnswerVote' ans.aID %}"><i class="fa fa-thumbs-up" style="padding: 10px;">{{ ans.votes.yes|length }}</i></a>
                     <a class="btn-hover" style="color: red" href="{% url 'mainapp:decAnswerVote' ans.aID %}"><i class="fa fa-thumbs-down" style="padding: 10px;">{{ ans.votes.no|length }}</i></a>
