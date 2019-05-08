@@ -356,7 +356,7 @@ button:focus {
   .home_banner_area .banner_inner {
     position: relative;
     width: 100%;
-    min-height: 700px;
+
      }
     .home_banner_area .banner_inner .banner_content {
       color: #222222;
@@ -12354,7 +12354,7 @@ a.text-dark:hover {
 /*# sourceMappingURL=bootstrap.min.css.map */
 </style>
     </head>
-    <body>
+    <body style="overflow:hidden">
 
 <ul id="n1"><div style="width:100%">
     <div style="float:left;width: 15%">
@@ -12393,7 +12393,7 @@ a.text-dark:hover {
 
         <!--================Home Banner Area =================-->
         <section class="home_banner_area">
-           	<div class="container box_1620" style="bottom:-86px;">
+           	<div class="container box_1620" style="bottom:-18px;">
            		<div class="banner_inner d-flex align-items-center">
 					<div class="banner_content">
 						<div class="media">
@@ -12406,10 +12406,9 @@ a.text-dark:hover {
 									<h3>HARSH KUMAR</h3>
 									<h4>4th YEAR , CSE</h4>
 									<h4>{{ user.uID }}</h4>
-									<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis quis architecto expedita distinctio omnis sint, illum modi ea voluptate doloremque voluptatum tenetur dicta esse. Vero ea quam eum veniam consequuntur.</p>
+                                    <h4>TYPE: {{ user.type }}</h4>
 									<ul class="list basic_info">
 										<li><a href="#"><i class="lnr lnr-calendar-full"></i> 19 June 1997</a></li>
-										<li><a href="#"><i class="lnr lnr-phone-handset">TYPE</i>{{ user.type }}</a></li>
 										<li><a href="#"><i class="lnr lnr-envelope"></i> {{ user.email }}</a></li>
 										<li><a href="#"><i class="lnr lnr-home"></i> HYDERABAD</a></li>
 									</ul>
@@ -12418,24 +12417,7 @@ a.text-dark:hover {
 										<li><a href="#"><i class="fa fa-twitter"></i></a></li>
 										<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
 									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-            </div>
-        </section>
-        <!--================End Home Banner Area =================-->
-
-        <!--================Welcome Area =================-->
-        <section class="welcome_area p_120">
-        	<div class="container">
-        		<div class="row welcome_inner">
-        			<div class="col-lg-6">
-        				<div class="welcome_text">
-        					<h4>About Myself</h4>
-        					<p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach. inappropriate behavior is often laughed.</p>
-        					<div class="row">
+                                    	<div class="row">
         						<div class="col-md-4">
         							<div class="wel_item">
         								<i class="lnr lnr-database"></i>
@@ -12458,13 +12440,16 @@ a.text-dark:hover {
         							</div>
         						</div>
         					</div>
-        				</div>
-        			</div>
-
-        		</div>
-        	</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
         </section>
-        <!--================End Welcome Area =================-->
+        <!--================End Home Banner Area =================-->
+
+        <!--================Welcome Area =================-->
 
 
 

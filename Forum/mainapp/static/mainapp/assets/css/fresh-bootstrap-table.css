@@ -3,7 +3,9 @@
  * version: 1.8.1
  * https://github.com/wenzhixin/bootstrap-table/
  */
+body{
 
+}
 .bootstrap-table .table {
   margin-bottom: 0 !important;
   border-bottom: 1px solid #dddddd;

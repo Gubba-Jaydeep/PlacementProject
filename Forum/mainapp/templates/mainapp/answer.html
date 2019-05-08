@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{% static 'mainapp/ans.css' %}">
     <title>Answer</title>
 </head>
-<body style="background-color: #2e2e31">
+<body style="background-color: #2e2e31;line-height: 1.2;">
 <div>
     <ul id="n1">
     <div style="width:100%">
@@ -27,32 +27,36 @@
     </div>
 </ul>
 </div>
-    <div class="col-md-12" id="ques_box" >
-        <h3 id="ques_heading" style="background-color: #2e2e31">Below question is related to {{ question.subject }}</h3>
-        <h4>{{ question.date }}</h4>
-        <p id="ques" style="color: rgba(255,255,255,0.7);font-weight: bold;">{{ question.question }}</p>
-        <b id="answer" style="text-transform: capitalize;color: rgba(255,255,255,0.5);">ASKED BY :{{ question.type }}</b>
-
-        <div id="ques">
+    <div class="col-md-12" id="ques_box" style="display: flex;" >
+        <h3><p id="ques" style="color: rgba(255,255,255,0.7);font-weight: bolder;margin:5px">{{ question.question }}</p></h3>
+        <div id="ques" style="flex-grow: 1;">
                 <a class="btn-hover" style="color: green" href="{% url 'mainapp:incQuestionVote' %}"><i class="fa fa-thumbs-up" style="padding: 10px;">{{ question.votes.yes|length }}</i></a>
                 <a class="btn-hover" style="color: red" href="{% url 'mainapp:decQuestionVote' %}"><i class="fa fa-thumbs-down" style="padding: 10px;">{{ question.votes.no|length }}</i></a>
         </div>
-    </div>
+    </div><div style="display: inline">
+ <h3 id="ques_heading" style="background-color: #2e2e31">Below question is related to {{ question.subject }}</h3>
+ <h4>{{ question.date }}</h4></div>
+<span id="answer" style="text-transform: capitalize;color: rgba(255,255,255,0.5);">ASKED BY :{{ question.type }}</span>
+
     <div class="col-md-12" id="ans_heading1">
         <h3 id="ans_head" style="background-color: #2e2e31">Answers</h3>
         <div  class="col-md-12" id="ans_heading" style="overflow-y:scroll; height:400px;">
         {% for ans in question.answers %}
-        <div class="col-md-12" id="ans_box" style="background-color: ghostwhite;">
-                <h4>{{ ans.date }}</h4>
-            <p id="answer">{{ ans.answer }}</p>
-            <br>
-            <b id="answer" style="text-transform: capitalize;">ANSWERED BY :{{ ans.type }}</b>
-            <div id="ques">
+            <h4>{{ ans.date }}</h4>
+        <div class="col-md-12" id="ans_box" style="background-color: ghostwhite;display: flex;">
+
+           <div> <p id="answer">{{ ans.answer }}</p></div>
+            <div id="ques" style="float: left;"></div>
+            <div style="float: right;width:25%"><span id="answer" style="text-transform: capitalize;">ANSWERED BY :<b>{{ ans.type }}</b></span><BR>
                     <a class="btn-hover" style="color: green" href="{% url 'mainapp:incAnswerVote' ans.aID %}"><i class="fa fa-thumbs-up" style="padding: 10px;">{{ ans.votes.yes|length }}</i></a>
                     <a class="btn-hover" style="color: red" href="{% url 'mainapp:decAnswerVote' ans.aID %}"><i class="fa fa-thumbs-down" style="padding: 10px;">{{ ans.votes.no|length }}</i></a>
             </div>
-        </div>
+            <br>
+
+            </div>
+
             {% endfor %}
+
 
         <div class="jumbotron">
         <div class="card">

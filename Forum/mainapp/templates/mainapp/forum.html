@@ -46,7 +46,7 @@
 }
 </style>
 </head>
-<body style="background-color:lightgray;">
+<body style="background-color:lightgray;font-size:16px;">
 <main>
 
 <ul id="n1"><div style="width:100%">
@@ -90,7 +90,7 @@
 							<td>{{ question.votes|length }}</td>
 							<td>{{ question.subject }}</td>
 							<td>
-								<a class="btn btn-default" href="{% url 'mainapp:getQuestionDetails' question.qID %}">Show Details</a>
+								<a class="btn btn-default" href="{% url 'mainapp:getQuestionDetails' question.qID %}">Answers</a>
 							</td>
 						</tr>
                             {% endfor %}

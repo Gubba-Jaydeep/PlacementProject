@@ -1,3 +1,4 @@
+
 #ques_box{
     display: block; 
     height:60%; 
@@ -5,8 +6,9 @@
     border-radius: 2px;
 }
 #ques{
-    padding:5px;
-    margin: 20px; 
+    flex-grow:1;
+    padding:0px;
+    margin: 3px;
 }
 #ques_heading{
     padding: 5px;
