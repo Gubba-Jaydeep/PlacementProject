@@ -28,9 +28,11 @@
 </ul>
 </div>
     <div class="col-md-12" id="ques_box" >
-        <h3 id="ques_heading" style="background-color: #2e2e31">Your Question</h3>
+        <h3 id="ques_heading" style="background-color: #2e2e31">Below question is related to {{ question.subject }}</h3>
         <h4>{{ question.date }}</h4>
-        <p id="ques" style="color: white;">{{ question.question }}</p>
+        <p id="ques" style="color: rgba(255,255,255,0.7);font-weight: bold;">{{ question.question }}</p>
+        <b id="answer" style="text-transform: capitalize;color: rgba(255,255,255,0.5);">ASKED BY :{{ question.type }}</b>
+
         <div id="ques">
                 <a class="btn-hover" style="color: green" href="{% url 'mainapp:incQuestionVote' %}"><i class="fa fa-thumbs-up" style="padding: 10px;">{{ question.votes.yes|length }}</i></a>
                 <a class="btn-hover" style="color: red" href="{% url 'mainapp:decQuestionVote' %}"><i class="fa fa-thumbs-down" style="padding: 10px;">{{ question.votes.no|length }}</i></a>
