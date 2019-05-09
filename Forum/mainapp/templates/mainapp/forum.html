@@ -87,7 +87,7 @@
 						<tr>
 
 							<td>{{ question.question }}</td>
-							<td>{{ question.votes|length }}</td>
+							<td>{{ question.votes.yes|length}} + {{question.votes.no|length }}</td>
 							<td>{{ question.subject }}</td>
 							<td>
 								<a class="btn btn-default" href="{% url 'mainapp:getQuestionDetails' question.qID %}">Answers</a>
@@ -197,6 +197,9 @@
 	   function showfunc(){
 			alert('Showing details' );
 	   }
+	   function addNum(x,y) {
+           return Number(x)+Number(y);
+       }
 	</script>
 	<script>
 	/* off-canvas sidebar toggle */

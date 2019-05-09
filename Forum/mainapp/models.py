@@ -5,6 +5,7 @@ from django.db import models
 import pymongo
 import datetime
 import bson
+import base64
 
 # Create your models here.
 
@@ -100,5 +101,27 @@ class Forum:
         x= mycol.find_one({'uID': uID})
         x['aura']=x['aura']+change
         mycol.update_one({"uID": uID}, {"$set": x})
+
+    def setImage(self, path, uname, text):
+        mycol = self.mydb["data"]
+        x={}
+        with open(path, "rb") as imageFile:
+            str = base64.b64encode(imageFile.read())
+            x['date'] = datetime.datetime.now()
+            x['image']=str
+            x['type']='teacher'
+            x['text']=text
+            x['uname']=uname
+            mycol.insert_one(x)
+            return True
+
+
+    def getImage(self, uname):
+        mycol = self.mydb["data"]
+        res = mycol.find_one({"uname": uname})
+        fh = open("test.jpg", "wb")
+        fh.write(base64.b64decode(res["image"]))
+        fh.close()
+        return "test.jpg"
 
 
