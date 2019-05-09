@@ -102,7 +102,7 @@ class Forum:
         x['aura']=x['aura']+change
         mycol.update_one({"uID": uID}, {"$set": x})
 
-    def setImage(self, path, uname, text):
+    def setMssg(self, path, uname, text):
         mycol = self.mydb["data"]
         x={}
         with open(path, "rb") as imageFile:
@@ -115,10 +115,16 @@ class Forum:
             mycol.insert_one(x)
             return True
 
+    def getMssg(self):
+        mycol=self.mydb['data']
+        res=[]
+        for i in mycol.find():
+            res.append(i)
+        return res
 
-    def getImage(self, uname):
+    def getImg(self,id):
         mycol = self.mydb["data"]
-        res = mycol.find_one({"uname": uname})
+        res = mycol.find_one({"_id": id})
         fh = open("test.jpg", "wb")
         fh.write(base64.b64decode(res["image"]))
         fh.close()
