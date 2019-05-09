@@ -4,7 +4,7 @@ from .models import Forum
 def forum():
     f = Forum()
     questions=f.getQuestions()
-    return questions
+    return reversed(questions)
 
 def askQuestion(request):
     f = Forum()
@@ -19,12 +19,13 @@ def askQuestion(request):
     q['subject']=request.GET['subject']
     if f.addQuestion(q):
         questions = f.getQuestions()
+        questions.reverse()
         return render(request, 'mainapp/forum.html',{"questions":questions})
     return render(request, 'mainapp/forum1.html',{})
 
 def index(request):
     if request.COOKIES.get("loggedIn", None):
-        return render(request, 'mainapp/forum.html', {'questions':Forum().getQuestions()})
+        return render(request, 'mainapp/forum.html', {'questions':reversed(Forum().getQuestions())})
     return render(request, 'mainapp/login.html', {})
 
 def login(request):
@@ -68,12 +69,12 @@ def r_validate(request):
     email=request.COOKIES.get("emailReg")
     password=request.GET['pass']
     type=request.GET['type']
-
+    u_name=request.GET['u_name']
     uotp=request.GET['uotp']
     otp=request.COOKIES.get("otp")
     if otp==uotp:
         f=Forum()
-        f.addUser({"uID":uID, "type":type, "email":email, "password":password, "aura":0, "qAsked":[]})
+        f.addUser({"uID":uID,"u_name":u_name , "type":type, "email":email, "password":password, "aura":0, "qAsked":[]})
         response =render(request, 'mainapp/login.html', {})
         response.delete_cookie("uidReg")
         response.delete_cookie("emailReg")

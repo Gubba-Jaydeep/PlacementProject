@@ -133,6 +133,7 @@ body {
                     {% csrf_token %}
                         <h6 >ROLLNO : {{ ctx.uId }}</h6>
                         <h6 >EMAIL : {{ ctx.email }}</h6>
+                    <input type="text" class="input" name="u_name" placeholder="Name" required autofocus>
                         <input type="password" class="input" name="pass" placeholder="Password" required autofocus>
 
 					<select class="input" name="type">
