@@ -141,4 +141,17 @@ def profile(request):
 def info(request):
     #we should create another collection of information which contains all messages(info) sent by all teachers..
     #so single db object is sufficient with array of msgs(each with userameof teacher(not anonymous),date,text,img=none(default) etc)
-    return render(request,'mainapp/info.html',{})
+    user = Forum().getUser(str(request.COOKIES.get('userName')))
+    msgs = Forum().getMssg()
+    if user['type']=="teacher":
+        return render(request, 'mainapp/info.html', {'user': user,'type':user['type'],'msgs':msgs})
+    return render(request,'mainapp/info.html',{'msgs':msgs})
+
+
+def addData(request):
+    msgText = request.GET['msgText']
+    user = Forum().getUser(str(request.COOKIES.get('userName')))
+    uname=user['u_name']
+    Forum().addMsg(msgText,uname)
+    msgs = Forum().getMssg()
+    return render(request, 'mainapp/info.html', {'user': user, 'type': user['type'], 'msgs': msgs})

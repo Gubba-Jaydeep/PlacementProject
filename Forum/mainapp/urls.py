@@ -18,4 +18,5 @@ urlpatterns=[
     path("<int:aID>/notok",views.decAnswerVote,name="decAnswerVote"),
     path("profile", views.profile, name="profile"),
     path("info",views.info, name="info"),
+    path("addData",views.addData,name="addData"),
 ]

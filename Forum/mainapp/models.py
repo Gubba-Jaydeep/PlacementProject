@@ -115,6 +115,14 @@ class Forum:
             mycol.insert_one(x)
             return True
 
+    def addMsg(self,text,uname):
+        mycol = self.mydb["data"]
+        x = {}
+        x['date'] = datetime.datetime.now()
+        x['text'] = text
+        x['u_name'] = uname
+        mycol.insert_one(x)
+
     def getMssg(self):
         mycol=self.mydb['data']
         res=[]
